@@ -4,17 +4,24 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour {
 
 	public GameObject Bullet;
-	int MoveSpeed=10;
+
+    GameObject GameControl;
+
+    //游戏局部参数
+    int MoveSpeed;
 
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    // Use this for initialization
+    void Start () {
+        GameControl = GameObject.Find("GameControl");
+        MoveSpeed = GameControl.GetComponent<GameControl>().PlayerSpeed;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.A)||Input.GetKey (KeyCode.LeftArrow)) {
+        MoveSpeed = GameControl.GetComponent<GameControl>().PlayerSpeed;
+
+        if (Input.GetKey (KeyCode.A)||Input.GetKey (KeyCode.LeftArrow)) {
 			//transform.Translate (Vector3.right *- MoveSpeed*Time.deltaTime);
 			Vector3 NewPosition = transform.position+(Vector3.right *- MoveSpeed*Time.deltaTime);
 			this.gameObject.GetComponent<Rigidbody2D> ().MovePosition(NewPosition);
@@ -25,8 +32,9 @@ public class PlayerControl : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (KeyCode.J)) {
 			Vector3 Position = transform.position + (Vector3.up * +0.4f);
-			print (Position);
 			Instantiate (Bullet, Position, Quaternion.identity);
-		}
+            //bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector3.up * MoveSpeed);
+
+        }
 	}
 }

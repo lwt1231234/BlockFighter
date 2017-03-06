@@ -2,12 +2,19 @@
 using System.Collections;
 
 public class BulletControl : MonoBehaviour {
-	int MoveSpeed = 5;
+    public int Damage;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    int MoveSpeed;
+    GameObject GameControl;
+
+    // Use this for initialization
+    void Start () {
+        GameControl = GameObject.Find("GameControl");
+        MoveSpeed = GameControl.GetComponent<GameControl>().BulletSpeed;
+        Damage = GameControl.GetComponent<GameControl>().BulletDamage;
+
+        //this.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector3.up * MoveSpeed);
+    }
 	
 	// Update is called once per frame
 	void Update () {
