@@ -5,14 +5,14 @@ using UnityEngine;
 public class GameControl : MonoBehaviour {
 
     //初始化参数
-    int MaxBlockNum = 20, StartLine_Y = 9;
+    int MaxBlockNum = 10, StartLine_Y = 9;
 
     //游戏全局参数
     public int BlockSpeed, BulletSpeed, PlayerSpeed, BulletDamage, BlockHealth;
 
     public GameObject Block;
     //图像参数
-    int BlockWide = 50;
+    public int BlockWide = 100;
 
     //游戏局部变量
     int BlockNum;
@@ -38,12 +38,20 @@ public class GameControl : MonoBehaviour {
 
     public void CreatNewLine()
     {
-        int i;
-        
+        int i,x;
+        int[] a = new int[MaxBlockNum];
+        for (i = 0; i < MaxBlockNum; i++)
+            a[i] = 0;
         for (i=0;i<BlockNum;i++)
         {
-			float x = (Random.Range(0, MaxBlockNum - i) - 10f)/2f + BlockWide/200f;
-            Vector3 Position = new Vector3(x, StartLine_Y+0.25f, 0);
+            do
+            {
+                x = Random.Range(0, MaxBlockNum - i);
+            } while (a[x] != 0);
+            a[x] = 1;
+            float y = (x + 0.5f) * BlockWide / 100f - 5f;
+            Vector3 Position = new Vector3(y, StartLine_Y+ BlockWide/200f, 0);
+            print(Position);
             Instantiate(Block, Position, Quaternion.identity);
         }
         

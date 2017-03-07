@@ -12,7 +12,6 @@ public class BlockControl : MonoBehaviour {
         GameControl = GameObject.Find("GameControl");
         MoveSpeed = GameControl.GetComponent<GameControl>().BlockSpeed;
         Health = GameControl.GetComponent<GameControl>().BlockHealth;
-
         this.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector3.down * MoveSpeed/2f);
     }
 	
@@ -27,7 +26,6 @@ public class BlockControl : MonoBehaviour {
         if (col.transform.tag == "Bullet")
         {
             Health = Health - col.gameObject.GetComponent<BulletControl>().Damage;
-            print(Health);
             if (Health <= 0)
                 Destroy(this.gameObject);
             Destroy(col.gameObject);
