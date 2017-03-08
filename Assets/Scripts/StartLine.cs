@@ -18,7 +18,7 @@ public class StartLine : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D col)
     {
-        if (col.transform.tag == "Block")
-            GameControl.GetComponent<GameControl>().CreatNewLine();
+        //if (col.transform.tag == "Block")
+            //GameControl.GetComponent<GameControl>().CreatNewLine();
     }
 }

@@ -9,6 +9,9 @@ public class PlayerControl : MonoBehaviour {
 
     //游戏局部参数
     int MoveSpeed, BlockWide;
+    float ShootInterval;
+
+    bool BulletReady;
 
 
     // Use this for initialization
@@ -16,11 +19,15 @@ public class PlayerControl : MonoBehaviour {
         GameControl = GameObject.Find("GameControl");
         MoveSpeed = GameControl.GetComponent<GameControl>().PlayerSpeed;
         BlockWide = GameControl.GetComponent<GameControl>().BlockWide;
+        ShootInterval = GameControl.GetComponent<GameControl>().ShootInterval;
+
+        print(MoveSpeed);
+        print(ShootInterval);
+        BulletReady = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        MoveSpeed = GameControl.GetComponent<GameControl>().PlayerSpeed;
 
         if (Input.GetKey (KeyCode.A)||Input.GetKey (KeyCode.LeftArrow)) {
 			//transform.Translate (Vector3.right *- MoveSpeed*Time.deltaTime);
@@ -31,11 +38,21 @@ public class PlayerControl : MonoBehaviour {
 			Vector3 NewPosition = transform.position+(Vector3.right *+ MoveSpeed*Time.deltaTime);
 			this.gameObject.GetComponent<Rigidbody2D> ().MovePosition(NewPosition);
 		}
-		if (Input.GetKeyDown (KeyCode.J)) {
-			Vector3 Position = transform.position + (Vector3.up *+(BlockWide/ 200f +0.2f));
-			Instantiate (Bullet, Position, Quaternion.identity);
-            //bullet.GetComponent<Rigidbody2D>().velocity = transform.TransformDirection(Vector3.up * MoveSpeed);
+		if (Input.GetKey (KeyCode.J)) {
+            if (BulletReady)
+            {
+                Vector3 Position = transform.position + (Vector3.up * +(BlockWide / 200f + 0.2f));
+                Instantiate(Bullet, Position, Quaternion.identity);
+                
+                BulletReady = false;
+                Invoke("ShootRefresh", ShootInterval);
+            }
 
         }
 	}
+
+    void ShootRefresh()
+    {
+        BulletReady = true;
+    }
 }

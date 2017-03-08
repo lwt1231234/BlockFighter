@@ -8,9 +8,19 @@ public class GameControl : MonoBehaviour {
     int MaxBlockNum = 10, StartLine_Y = 9;
 
     //游戏全局参数
-    public int BlockSpeed, BulletSpeed, PlayerSpeed, BulletDamage, BlockHealth;
+    //玩家参数
+    public int PlayerSpeed;
+    public float ShootInterval;
+    //子弹参数
+    public int BulletSpeed, BulletDamage;
+    //方块参数
+    public int BlockSpeed, BlockHealth;
 
-    public GameObject Block;
+    //游戏局部参数
+    //难度
+    float BlockInterval;
+
+    public GameObject Block,Player;
     //图像参数
     public int BlockWide = 100;
 
@@ -19,16 +29,23 @@ public class GameControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //速度
-        BlockSpeed = 1;
-        BulletSpeed = 3;
+        //玩家参数
         PlayerSpeed = 5;
-        //伤害和血量
+        ShootInterval = 1.0f;
+        //子弹参数
+        BulletSpeed = 3;
         BulletDamage = 1;
-        BlockHealth = 3;
+        //砖块参数
+        BlockSpeed = 1;
+        BlockHealth = 1;
+        //难度
         BlockNum = 1;
+        BlockInterval = 3.0f;
 
         CreatNewLine();
+        Vector3 Position = new Vector3(0, -7.2f, 0);
+        Instantiate(Player, Position, Quaternion.identity);
+
     }
 	
 	// Update is called once per frame
@@ -51,9 +68,8 @@ public class GameControl : MonoBehaviour {
             a[x] = 1;
             float y = (x + 0.5f) * BlockWide / 100f - 5f;
             Vector3 Position = new Vector3(y, StartLine_Y+ BlockWide/200f, 0);
-            print(Position);
             Instantiate(Block, Position, Quaternion.identity);
         }
-        
+        Invoke("CreatNewLine", BlockInterval);
     }
 }
