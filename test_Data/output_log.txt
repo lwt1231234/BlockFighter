@@ -1,10 +1,13 @@
-Initialize engine version: 5.4.0f3 (a6d8d714de6f)
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+d3d11: failed to create D3D11 device (0x80070057)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 760 (ID=0x1187)
+    Version:  Direct3D 9.0c [nvd3dum.dll 21.21.13.7254]
+    Renderer: NVIDIA GeForce GTX 760
     Vendor:   NVIDIA
-    VRAM:     1989 MB
+    VRAM:     1989 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 NULL=1 RESZ=0 SlowINTZ=0 ATOC=1 BC4=1 BC5=1
 Begin MonoManager ReloadAssembly
 Platform assembly: D:\Project\BlockFighter\test_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading D:\Project\BlockFighter\test_Data\Managed\UnityEngine.dll into Unity Child Domain
@@ -14,13 +17,23 @@ Platform assembly: D:\Project\BlockFighter\test_Data\Managed\UnityEngine.UI.dll 
 Loading D:\Project\BlockFighter\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\Project\BlockFighter\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading D:\Project\BlockFighter\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.035 seconds
+Platform assembly: D:\Project\BlockFighter\test_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading D:\Project\BlockFighter\test_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.024 seconds
 Platform assembly: D:\Project\BlockFighter\test_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\Project\BlockFighter\test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 2.100618 ms
+UnloadTime: 109.325478 ms
+5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 18e4 -> priority: 1 
+  Thread -> id: 1de4 -> priority: 1 

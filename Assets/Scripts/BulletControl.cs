@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class BulletControl : MonoBehaviour {
+    public bool NotPaused;
+
     public int Damage;
 
     int MoveSpeed;
@@ -9,6 +11,7 @@ public class BulletControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        NotPaused = true;
         GameControl = GameObject.Find("GameControl");
         MoveSpeed = GameControl.GetComponent<GameControl>().BulletSpeed;
         Damage = GameControl.GetComponent<GameControl>().BulletDamage;
@@ -18,7 +21,10 @@ public class BulletControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 NewPosition = transform.position+(Vector3.up *+ MoveSpeed*Time.deltaTime);
-		this.gameObject.GetComponent<Rigidbody2D> ().MovePosition(NewPosition);
+        if (NotPaused)
+        {
+            Vector3 NewPosition = transform.position + (Vector3.up * +MoveSpeed * Time.deltaTime);
+            this.gameObject.GetComponent<Rigidbody2D>().MovePosition(NewPosition);
+        }      
 	}
 }

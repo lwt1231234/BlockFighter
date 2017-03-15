@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class StartLine : MonoBehaviour {
 
-    GameObject GameControl;
+    //GameObject GameControl;
 
     // Use this for initialization
     void Start () {
-        GameControl = GameObject.Find("GameControl");
+        //GameControl = GameObject.Find("GameControl");
     }
 	
 	// Update is called once per frame
