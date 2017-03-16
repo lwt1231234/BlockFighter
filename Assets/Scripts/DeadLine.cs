@@ -18,16 +18,7 @@ public class DeadLine : MonoBehaviour {
     {
         if (col.transform.tag == "Block")
         {
-            GameObject[] target_Blocks = GameObject.FindGameObjectsWithTag("Block");
-            foreach (GameObject Block in target_Blocks)
-                Block.GetComponent<BlockControl>().NotPaused = false;
-            GameObject[] target_Bullets = GameObject.FindGameObjectsWithTag("Bullet");
-            foreach (GameObject Bullet in target_Bullets)
-            {
-                Bullet.GetComponent<BulletControl>().NotPaused = false;
-                //print(Bullet.GetComponent<BulletControl>().NotPaused);
-            }
-            GameObject.Find("GameControl").GetComponent<GameControl>().NotPaused = false;
+            GameObject.Find("GameControl").GetComponent<GameControl>().PauseGame();
         }
     }
 }

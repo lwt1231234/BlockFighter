@@ -18,6 +18,8 @@ public class GameControl : MonoBehaviour {
     public int BulletSpeed, BulletDamage;
     //方块参数
     public int BlockSpeed, BlockHealth;
+    //得分
+    public int GameScore;
 
     //游戏局部参数
     //难度
@@ -45,8 +47,10 @@ public class GameControl : MonoBehaviour {
         BlockSpeed = 5;
         BlockHealth = 1;
         //难度
-        BlockNum = 3;
+        BlockNum = 1;
         BlockInterval = 3.0f;
+        //结果
+        GameScore = 0;
 
         CreatNewLine();
         Vector3 Position = new Vector3(0, -7.2f, 0);
@@ -58,6 +62,20 @@ public class GameControl : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void PauseGame()
+    {
+        GameObject[] target_Blocks = GameObject.FindGameObjectsWithTag("Block");
+        foreach (GameObject Block in target_Blocks)
+            Block.GetComponent<BlockControl>().NotPaused = false;
+        GameObject[] target_Bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject Bullet in target_Bullets)
+        {
+            Bullet.GetComponent<BulletControl>().NotPaused = false;
+            //print(Bullet.GetComponent<BulletControl>().NotPaused);
+        }
+        GameObject.Find("GameControl").GetComponent<GameControl>().NotPaused = false;
+    }
 
     void CreatBlock(Vector3 Position)
     {
@@ -87,4 +105,12 @@ public class GameControl : MonoBehaviour {
         }
         Invoke("CreatNewLine", BlockInterval);
     }
+
+    public int AddScore(int add)
+    {
+        GameScore += add;
+        return GameScore;
+    }
+
+    
 }

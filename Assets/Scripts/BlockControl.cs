@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlockControl : MonoBehaviour {
 
@@ -37,6 +38,9 @@ public class BlockControl : MonoBehaviour {
             if (Health <= 0)
                 Destroy(this.gameObject);
             Destroy(col.gameObject);
+            int Score = GameControl.GetComponent<GameControl>().AddScore(1);
+            //print(Score);
+            GameObject.Find("MainCanvas/Score").GetComponent<Text>().text = Score.ToString();
         }
     }
 }
